@@ -1,3 +1,4 @@
+import { Button } from '../button/button'
 import { TextField } from '../text-field/text-field'
 import './form-create-account.css'
 
@@ -12,6 +13,9 @@ export const FormCreateAccount = () => {
                 <TextField label="Password" placeholder="Type your password"/>
                 <p>Password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>
                 <TextField label="Confirm password" placeholder="Type your password again"/>
+                <Button>
+                    Create Account
+                </Button>
             </form>
         </section>
     )

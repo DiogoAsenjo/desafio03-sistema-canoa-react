@@ -4,4 +4,12 @@
     font-weight: 700;
     font-size: 18px;
     padding: 10px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    margin: 32px 0;
+}
+
+.button:hover {
+    color: #95FFD4;
 }

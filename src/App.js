@@ -19,7 +19,6 @@ function App() {
       <Banner/>
       <FormCreateAccount/>
       <Droplist label = 'Order by ' itens = {filters}/>
-      <Button text = 'AHHHHHHH'/>
     </div>
   );
 }
