@@ -9,7 +9,8 @@ export const FormCreateAccount = () => {
                 <TextField label="Full Name" placeholder="Write your name"/>
                 <TextField label="Cellphone" placeholder="(XX)9XXXX-XXXX"/>
                 <TextField label="E-mail" placeholder="example@email.com"/>
-                <TextField label="Password" placeholder="Password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol"/>
+                <TextField label="Password" placeholder="Type your password"/>
+                <p>Password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>
                 <TextField label="Confirm password" placeholder="Type your password again"/>
             </form>
         </section>
