@@ -1,5 +1,5 @@
-import { Button } from '../button/button'
-import { TextField } from '../text-field/text-field'
+import { Button } from '../../button/button'
+import { TextField } from '../../text-field/text-field'
 import './form-create-account.css'
 
 export const FormCreateAccount = () => {

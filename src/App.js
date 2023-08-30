@@ -1,7 +1,7 @@
 import { Banner } from "./componentes/banner/banner";
 import { Button } from "./componentes/button/button";
 import { Droplist } from "./componentes/droplist/droplist";
-import { FormCreateAccount } from "./componentes/form/form-create-account";
+import { FormCreateAccount } from "./componentes/form/create-account/form-create-account";
 
 function App() {
 
