@@ -11,3 +11,13 @@ export const Droplist = (props) => {
     )
 }
 
+
+//Quando for usar isso na página eu vou precisar colocar isso no arquivo da página antes do return() para conseguir ter todas essas opções no droplist.
+/* const filters = [
+    'Id',
+    'Date',
+    'Time Spent',
+    'Distance',
+    'Max Speed',
+    'Average Speed'
+  ] */
