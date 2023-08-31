@@ -5,10 +5,10 @@ import './form-modify-workout.css'
 
 export const FormModifyWorkout = () => {
 
-   /*  const login = (event) => {
+   const modifyWorkout = (event) => {
         event.preventDefault();
-        console.log(`${username} logged using this password: ${password}`);
-    } */
+        console.log(`Date: ${date} Time Spent: ${timeSpent} Distance: ${distance} Max Speed: ${maxSpeed} Average Speed: ${averageSpeed}`);
+    }
 
     const [date, setDate] = useState('');
     const [timeSpent, setTimeSpent] = useState('');
@@ -18,7 +18,7 @@ export const FormModifyWorkout = () => {
 
     return (
         <section className='form-modify-workout'>
-            <form /* onSubmit={login} */>
+            <form onSubmit={modifyWorkout}>
                 <h2>Modify workout</h2>
                 <TextField 
                     mandatory={true} 
