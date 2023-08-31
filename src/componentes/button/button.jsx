@@ -2,6 +2,6 @@ import './button.css'
 
 export const Button = (props) => {
     return (
-        <button className='button'>{props.children}</button>
+        <button className='button' onClick={props.onClick}>{props.children} </button>
     )
 }
