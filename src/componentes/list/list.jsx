@@ -1,5 +1,5 @@
 import './list.css'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable } from 'react-table';
 
 function DataList({ data }) {
@@ -29,9 +29,24 @@ function DataList({ data }) {
         Header: 'Average Speed',
         accessor: 'averageSpeed',
       },
+      {
+        Header: 'Actions',
+        accessor: 'button'
+      }
     ],
     []
   );
+
+  //USAR ISSO QUANDO FOR DELETAR
+ function onDeleteWorkout(id) {
+  // TODO
+  alert(`Treino ${id} deletado`)
+ }
+
+ useEffect(() => {
+  // const response = async 
+  alert(' ENTROU')
+ }, [])
 
   const {
     getTableProps,
@@ -59,13 +74,18 @@ function DataList({ data }) {
         {rows.map(row => {
           prepareRow(row);
           return (
+            <>
             <tr {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return (
-                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td> 
                 );
               })}
-            </tr>
+              <button
+                onClick={() => onDeleteWorkout('oooo')}
+              >Delete</button>
+            </tr> 
+            </>
           );
         })}
       </tbody>
