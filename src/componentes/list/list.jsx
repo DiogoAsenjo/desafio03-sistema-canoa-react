@@ -43,10 +43,10 @@ function DataList({ data }) {
   alert(`Treino ${id} deletado`)
  }
 
- useEffect(() => {
+/*  useEffect(() => {
   // const response = async 
   alert(' ENTROU')
- }, [])
+ }, []) */
 
   const {
     getTableProps,

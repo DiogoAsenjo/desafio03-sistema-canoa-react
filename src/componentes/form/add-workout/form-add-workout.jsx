@@ -2,12 +2,36 @@ import { useState } from 'react'
 import { Button } from '../../button/button'
 import { TextField } from '../../text-field/text-field'
 import './form-add-workout.css'
+import { api } from '../../../assets/api/api'
 
 export const FormAddWorkout = () => {
 
-    const addWorkout = (event) => {
+    const [error, setError] = useState([]);
+
+
+    const addWorkout = async(event) => {
+        const headers = {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`, 
+            'Content-type': 'application/json'
+        }
         event.preventDefault();
-        console.log(`Date: ${date} Time Spent: ${timeSpent} Distance: ${distance} Max Speed: ${maxSpeed} Average Speed: ${averageSpeed}`);
+        console.log(date, timeSpent, distance, maxSpeed, averageSpeed)
+        await api.post("/workouts", {
+            date,
+            timeSpent,
+            distance,
+            maxSpeed,
+            averageSpeed
+        }, {headers})
+        .then((response) => {
+            console.log(response);
+
+        })
+        .catch((error) => {
+            //Se não estiver autorizado passar aviso e redirecionar pro login.
+            console.log(error)
+            setError(error.response.data.message)
+        })
     }
 
     const [date, setDate] = useState('');
@@ -39,23 +63,23 @@ export const FormAddWorkout = () => {
                     label="Distance" 
                     placeholder="Only numbers"
                     value={distance}
-                    typed={value => setDistance(value)}
+                    typed={value => setDistance(parseFloat(value))}
                 />
                 <TextField 
                     mandatory={true} 
                     label="Max speed" 
                     placeholder="Only numbers"
                     value={maxSpeed}
-                    typed={value => setMaxSpeed(value)}
+                    typed={value => setMaxSpeed(parseFloat(value))}
                 />
                 <TextField 
                     mandatory={true} 
                     label="Average speed" 
                     placeholder="Only numbers"
                     value={averageSpeed}
-                    typed={value => setAverageSpeed(value)}
+                    typed={value => setAverageSpeed(parseFloat(value))}
                 />
-                <Button>
+                <Button onClick={(e) => {addWorkout(e)}}>
                     Add workout
                 </Button>
             </form>

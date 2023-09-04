@@ -55,7 +55,7 @@ export const FormLogin = () => {
                 error?.length > 0 && <p className='error'>{error[0]}</p>
                 )}
 
-                <Button className='button-login'onClick={(e) => {login(e)}}>
+                <Button className='button-login' onClick={(e) => {login(e)}}>
                     Login
                 </Button>
                 <Button className='button-create' onClick={(e) => {navigate("/create-account")}}>
