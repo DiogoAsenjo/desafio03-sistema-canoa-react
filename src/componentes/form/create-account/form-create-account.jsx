@@ -2,19 +2,39 @@ import { Button } from '../../button/button'
 import { TextField } from '../../text-field/text-field'
 import './form-create-account.css'
 import { useState } from 'react'
+import { api } from '../../../assets/api/api'
+import { useNavigate } from 'react-router-dom'
 
 export const FormCreateAccount = () => {
 
-    const createAccount = (event) => {
+    const navigate = useNavigate();
+    const [error, setError] = useState([]);
+
+    const createAccount = async(event) => {
         event.preventDefault();
-        console.log(`Full name: ${fullName} Cellphone ${cellphone} Email: ${email} Password: ${password} Confirme password: ${confirmPassword}`);
+        console.log(fullName, cellphone, email, password)
+        await api.post("/signup", {
+            fullName,
+            cellphone,
+            email,
+            password
+        })
+        .then((response) => {
+            console.log(response);
+            if(response.request.status === 200) navigate("/")
+
+        })
+        .catch((error) => {
+            setError(error.response.data.message)
+            console.log(error)
+        })
     }
 
     const [fullName, setFullName] = useState('');
     const [cellphone, setCellphone] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    //const [confirmPassword, setConfirmPassword] = useState('');
 
     return (
         <section className='form-create-account'>
@@ -48,15 +68,16 @@ export const FormCreateAccount = () => {
                     value={password}
                     typed={value => setPassword(value)}
                 />
-                <p>Password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>
-                <TextField 
+                {error.length === 0 && <p>Password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>}
+                {error.length > 0 && <p className='error'>{error[0]}</p>}
+                {/* <TextField 
                     mandatory = {true} 
                     label="Confirm password" 
                     placeholder="Type your password again"
                     value={confirmPassword}
                     typed={value => setConfirmPassword(value)}
-                />
-                <Button>
+                /> */}
+                <Button onClick={(e) => {createAccount(e)}}>
                     Create Account
                 </Button>
             </form>

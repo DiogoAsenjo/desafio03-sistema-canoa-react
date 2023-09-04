@@ -4,6 +4,11 @@
     margin: 80px 0;
 }
 
+.error{
+    color: red;
+    font-weight: 700;
+}
+
 .form-create-account form {
     display: flex;
     flex-flow: column wrap;

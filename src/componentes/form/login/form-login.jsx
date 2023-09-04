@@ -2,12 +2,28 @@ import { useState } from 'react'
 import { Button } from '../../button/button'
 import { TextField } from '../../text-field/text-field'
 import './form-login.css'
+import { api } from '../../../assets/api/api'
+import { useNavigate } from 'react-router-dom'
 
 export const FormLogin = () => {
 
-    const login = (event) => {
+    const navigate = useNavigate();
+    const [error, setError] = useState();
+
+
+    const login = async(event) => {
         event.preventDefault();
-        console.log(`${username} logged using this password: ${password}`);
+        console.log(username)
+        await api.post("/", {
+            email: username,
+            password
+        })
+        .then((response) => {
+            sessionStorage.setItem("token", response.data.access_token);
+            if(response.request.status === 200) navigate("/workout");
+
+        })
+        .catch((error) => setError(error.response.data.message))
     }
 
     const [username, setUsername] = useState('');
@@ -33,7 +49,8 @@ export const FormLogin = () => {
                     type='password' 
                 />
                 <p>Remember: password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>
-                <Button>
+                {error && (<p>{error}</p>)}
+                <Button onClick={(e) => {login(e)}}>
                     Login
                 </Button>
             </form>
