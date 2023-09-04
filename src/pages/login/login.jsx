@@ -8,8 +8,6 @@ function Login() {
     <div className="login">
       <Banner/>
       <FormLogin/>
-      <Link to = 'create-account'>Don't have and account? Create one!</Link>
-      <Link to = 'workout'>Check your workouts here!</Link>
     </div>
   );
 }

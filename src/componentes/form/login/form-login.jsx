@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 export const FormLogin = () => {
 
     const navigate = useNavigate();
-    const [error, setError] = useState();
+    const [error, setError] = useState([]);
 
 
     const login = async(event) => {
@@ -48,10 +48,18 @@ export const FormLogin = () => {
                     typed={value => setPassword(value)}
                     type='password' 
                 />
-                <p>Remember: password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p>
-                {error && (<p>{error}</p>)}
-                <Button onClick={(e) => {login(e)}}>
+                {/* <p>Remember: password should have at least 8 characters and one of each: lowercase, uppercase, a number and a symbol</p> */}
+                {error && typeof error === 'string' ? (
+                <p className='error'>{error}</p>
+                ) : (
+                error?.length > 0 && <p className='error'>{error[0]}</p>
+                )}
+
+                <Button className='button-login'onClick={(e) => {login(e)}}>
                     Login
+                </Button>
+                <Button className='button-create' onClick={(e) => {navigate("/create-account")}}>
+                    Create account
                 </Button>
             </form>
         </section>
