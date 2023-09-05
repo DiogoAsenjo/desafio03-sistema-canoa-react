@@ -1,7 +1,5 @@
-import { Button } from "../../componentes/button/button";
 import DataList from "../../componentes/list/list";
 import { AddWorkoutModal } from "../../componentes/modal/modal-add-workout/modal-add-workout";
-import { ModifyWorkoutModal } from "../../componentes/modal/modal-modify-workout/modal-modify-workout";
 import { api } from "../../assets/api/api";
 import { useState, useEffect } from "react";
 import "./workout.css";
@@ -49,13 +47,6 @@ function Workout() {
       </div>
 
       <AddWorkoutModal />
-      <Button
-        onClick={(e) => {
-          showAllWorkouts(e);
-        }}
-      >
-        All workouts
-      </Button>
     </section>
   );
 }

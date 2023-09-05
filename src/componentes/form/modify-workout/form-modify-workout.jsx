@@ -16,7 +16,7 @@ export const FormModifyWorkout = () => {
     console.log(date, timeSpent, distance, maxSpeed, averageSpeed);
     await api
       .put(
-        `/workouts/${id}`,
+        `/workouts/modify/${id}`,
         {
           date,
           timeSpent,
@@ -85,7 +85,7 @@ export const FormModifyWorkout = () => {
 
         <Button
           onClick={(e) => {
-            modifyWorkout(e);
+            modifyWorkout(e, 3);
           }}
         >
           Modify Workout
