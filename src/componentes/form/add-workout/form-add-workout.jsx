@@ -19,16 +19,14 @@ export const FormAddWorkout = () => {
         await api.post("/workouts", {
             date,
             timeSpent,
-            distance,
-            maxSpeed,
-            averageSpeed
+            distance: parseFloat(distance),
+            maxSpeed: parseFloat(maxSpeed),
+            averageSpeed: parseFloat(averageSpeed),
         }, {headers})
         .then((response) => {
             console.log(response);
-
         })
         .catch((error) => {
-            //Se não estiver autorizado passar aviso e redirecionar pro login.
             console.log(error)
             setError(error.response.data.message)
         })
@@ -63,22 +61,25 @@ export const FormAddWorkout = () => {
                     label="Distance" 
                     placeholder="Only numbers"
                     value={distance}
-                    typed={value => setDistance(parseFloat(value))}
+                    typed={value => setDistance(value)}
                 />
                 <TextField 
                     mandatory={true} 
                     label="Max speed" 
                     placeholder="Only numbers"
                     value={maxSpeed}
-                    typed={value => setMaxSpeed(parseFloat(value))}
+                    typed={value => setMaxSpeed(value)}
                 />
                 <TextField 
                     mandatory={true} 
                     label="Average speed" 
                     placeholder="Only numbers"
                     value={averageSpeed}
-                    typed={value => setAverageSpeed(parseFloat(value))}
+                    typed={value => setAverageSpeed(value)}
                 />
+                
+                {error.length > 0 && <p className='error'>{error}</p>}
+
                 <Button onClick={(e) => {addWorkout(e)}}>
                     Add workout
                 </Button>

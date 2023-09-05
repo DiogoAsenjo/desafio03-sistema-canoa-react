@@ -2,12 +2,34 @@ import { useState } from 'react'
 import { Button } from '../../button/button'
 import { TextField } from '../../text-field/text-field'
 import './form-modify-workout.css'
+import { api } from '../../../assets/api/api'
 
 export const FormModifyWorkout = () => {
 
-   const modifyWorkout = (event) => {
+    const [error, setError] = useState([]);
+
+
+    const modifyWorkout = async(event, id) => {
+        const headers = {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`, 
+            'Content-type': 'application/json'
+        }
         event.preventDefault();
-        console.log(`Date: ${date} Time Spent: ${timeSpent} Distance: ${distance} Max Speed: ${maxSpeed} Average Speed: ${averageSpeed}`);
+        console.log(date, timeSpent, distance, maxSpeed, averageSpeed)
+        await api.put(`/workouts/${id}`, {
+            date,
+            timeSpent,
+            distance: parseFloat(distance),
+            maxSpeed: parseFloat(maxSpeed),
+            averageSpeed: parseFloat(averageSpeed),
+        }, {headers})
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error)
+            setError(error.response.data.message)
+        })
     }
 
     const [date, setDate] = useState('');
@@ -55,7 +77,10 @@ export const FormModifyWorkout = () => {
                     value={averageSpeed}
                     typed={value => setAverageSpeed(value)}
                 />
-                <Button>
+
+                {error.length > 0 && <p className='error'>{error}</p>}
+
+                <Button onClick={(e) => {modifyWorkout(e)}}>
                     Modify workout
                 </Button>
             </form>
