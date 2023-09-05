@@ -7,13 +7,19 @@ import "./workout.css";
 function Workout() {
   const [error, setError] = useState([]);
   const [workouts, setWorkouts] = useState([]);
+  const [realoadPage, setReloadPage] = useState(false);
 
-  const showAllWorkouts = async (event) => {
+  useEffect(() => {
+    showAllWorkouts();
+  }, [realoadPage]);
+
+  const showAllWorkouts = async (event = null) => {
     const headers = {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       "Content-type": "application/json",
     };
-    event.preventDefault();
+    if (event) event.preventDefault();
+
     await api
       .get(`/workouts/all`, { headers })
       .then((response) => {
@@ -42,11 +48,17 @@ function Workout() {
             <p className="actions">Actions</p>
           </div>
           {workouts.length > 0 &&
-            workouts.map((workout) => <DataList workout={workout} />)}
+            workouts.map((workout) => (
+              <DataList
+                workout={workout}
+                reloadPage={setReloadPage}
+                statePage={realoadPage}
+              />
+            ))}
         </>
       </div>
 
-      <AddWorkoutModal />
+      <AddWorkoutModal reloadPage={setReloadPage} statePage={realoadPage} />
     </section>
   );
 }

@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { api } from "../../assets/api/api";
 
-function DataList(workout) {
+function DataList(props) {
   //const [selectedWorkoutId, setSelectedWorkoutId] = useState([]);
-  workout = workout.workout;
-  const workoutId = workout.id;
+  const workout = props.workout;
+  const workoutId = props.workout.id;
 
   const [error, setError] = useState([]);
 
@@ -28,6 +28,7 @@ function DataList(workout) {
         console.log(error);
         setError(error.response.data.message);
       });
+    props.reloadPage(!props.statePage);
   };
 
   return (
@@ -39,7 +40,11 @@ function DataList(workout) {
         <p className="maxSpeed">{workout?.maxSpeed}</p>
         <p className="averageSpeed">{workout?.averageSpeed}</p>
         <div className="actions">
-          <ModifyWorkoutModal workoutId={workout.id} />
+          <ModifyWorkoutModal
+            workoutId={workout.id}
+            reloadPage={props.reloadPage}
+            statePage={props.statePage}
+          />
           <Button
             onClick={(e) => {
               deleteWorkout(e, workoutId);

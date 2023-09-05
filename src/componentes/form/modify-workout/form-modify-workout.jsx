@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../button/button";
 import { TextField } from "../../text-field/text-field";
 import "./form-modify-workout.css";
 import { api } from "../../../assets/api/api";
 
+function verifyingTimeSpent(state) {
+  const isValid = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/;
+  if (isValid.test(state)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export const FormModifyWorkout = (props) => {
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
+  const [responseOk, setResponseOk] = useState(false);
   const workoutId = props.workoutId;
+
+  useEffect(() => {
+    if (responseOk) {
+      props.reloadPage(!props.statePage);
+      props.closeModal();
+    }
+  }, [responseOk]);
 
   const modifyWorkout = async (event, workoutId) => {
     const headers = {
@@ -14,26 +31,32 @@ export const FormModifyWorkout = (props) => {
       "Content-type": "application/json",
     };
     event.preventDefault();
-    console.log(date, timeSpent, distance, maxSpeed, averageSpeed);
-    await api
-      .put(
-        `/workouts/modify/${workoutId}`,
-        {
-          date,
-          timeSpent,
-          distance: parseFloat(distance),
-          maxSpeed: parseFloat(maxSpeed),
-          averageSpeed: parseFloat(averageSpeed),
-        },
-        { headers }
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error.response.data.message);
-      });
+    setError(null);
+    if (verifyingTimeSpent(timeSpent)) {
+      await api
+        .put(
+          `/workouts/modify/${workoutId}`,
+          {
+            date,
+            timeSpent,
+            distance: parseFloat(distance),
+            maxSpeed: parseFloat(maxSpeed),
+            averageSpeed: parseFloat(averageSpeed),
+          },
+          { headers }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) setResponseOk(true);
+          else setResponseOk(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setError(error.response.data.message);
+        });
+    } else {
+      setError("Time spent should be in this format HH:MM:SS");
+    }
   };
 
   const [date, setDate] = useState("");
@@ -82,7 +105,9 @@ export const FormModifyWorkout = (props) => {
           typed={(value) => setAverageSpeed(value)}
         />
 
-        {error.length > 0 && <p className="error">{error}</p>}
+        {error && (
+          <p className="error">{Array.isArray(error) ? error[0] : error}</p>
+        )}
 
         <Button
           onClick={(e) => {

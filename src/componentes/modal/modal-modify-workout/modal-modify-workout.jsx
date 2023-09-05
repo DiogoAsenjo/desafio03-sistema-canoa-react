@@ -11,8 +11,9 @@ const customStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "80%",
+    width: "40%",
     height: "80%",
+    backgroundColor: "darkslategrey",
   },
 };
 
@@ -37,7 +38,12 @@ export const ModifyWorkoutModal = (props) => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <FormModifyWorkout workoutId={props.workoutId} />
+        <FormModifyWorkout
+          workoutId={props.workoutId}
+          reloadPage={props.reloadPage}
+          statePage={props.statePage}
+          closeModal={closeModal}
+        />
         <Button onClick={(e) => closeModal()}>Close modal</Button>
       </Modal>
     </>
