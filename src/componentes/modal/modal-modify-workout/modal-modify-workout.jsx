@@ -39,7 +39,7 @@ export const ModifyWorkoutModal = (props) => {
         style={customStyles}
       >
         <FormModifyWorkout
-          workoutId={props.workoutId}
+          workout={props.workout}
           reloadPage={props.reloadPage}
           statePage={props.statePage}
           closeModal={closeModal}

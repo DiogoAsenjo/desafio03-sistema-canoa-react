@@ -16,7 +16,7 @@ function verifyingTimeSpent(state) {
 export const FormModifyWorkout = (props) => {
   const [error, setError] = useState(null);
   const [responseOk, setResponseOk] = useState(false);
-  const workoutId = props.workoutId;
+  const workoutId = props.workout.id;
 
   useEffect(() => {
     if (responseOk) {
@@ -59,11 +59,13 @@ export const FormModifyWorkout = (props) => {
     }
   };
 
-  const [date, setDate] = useState("");
-  const [timeSpent, setTimeSpent] = useState("");
-  const [distance, setDistance] = useState("");
-  const [maxSpeed, setMaxSpeed] = useState("");
-  const [averageSpeed, setAverageSpeed] = useState("");
+  const [date, setDate] = useState(`${props.workout.date}`);
+  const [timeSpent, setTimeSpent] = useState(`${props.workout.timeSpent}`);
+  const [distance, setDistance] = useState(`${props.workout.distance}`);
+  const [maxSpeed, setMaxSpeed] = useState(`${props.workout.maxSpeed}`);
+  const [averageSpeed, setAverageSpeed] = useState(
+    `${props.workout.averageSpeed}`
+  );
 
   return (
     <section className="form-modify-workout">

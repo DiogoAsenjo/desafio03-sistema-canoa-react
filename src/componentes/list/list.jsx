@@ -41,7 +41,7 @@ function DataList(props) {
         <p className="averageSpeed">{workout?.averageSpeed}</p>
         <div className="actions">
           <ModifyWorkoutModal
-            workoutId={workout.id}
+            workout={workout}
             reloadPage={props.reloadPage}
             statePage={props.statePage}
           />
