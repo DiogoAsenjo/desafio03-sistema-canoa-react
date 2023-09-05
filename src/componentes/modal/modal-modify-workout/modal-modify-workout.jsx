@@ -1,40 +1,45 @@
-import React from "react"
-import { useState } from "react"
-import Modal from "react-modal"
-import { Button } from "../../button/button"
-import { FormModifyWorkout } from "../../form/modify-workout/form-modify-workout"
-
+import React from "react";
+import { useState } from "react";
+import Modal from "react-modal";
+import { Button } from "../../button/button";
+import { FormModifyWorkout } from "../../form/modify-workout/form-modify-workout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '80%',
-        height: '80%',
-    },
-}
+  content: {
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "80%",
+    height: "80%",
+  },
+};
 
 export const ModifyWorkoutModal = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    }
-    
-    return(
-        <>
-        <Button onClick={openModal}>
-            Modify workout
-        </Button>
-        <Modal isOpen={isModalOpen} onRequestClose={closeModal} style={customStyles}>
-            <FormModifyWorkout/>
-            <Button onClick={(e) => closeModal()}>Close modal</Button>
-        </Modal>
-        </>
-    )
-}
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  return (
+    <>
+      <Button onClick={openModal}>
+        <FontAwesomeIcon icon={faPenToSquare} />
+      </Button>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <FormModifyWorkout />
+        <Button onClick={(e) => closeModal()}>Close modal</Button>
+      </Modal>
+    </>
+  );
+};

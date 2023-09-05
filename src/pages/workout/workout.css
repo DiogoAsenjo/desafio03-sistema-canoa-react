@@ -1,0 +1,33 @@
+.workouts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    gap: 15px;
+    background-color: inherit;
+}
+
+.Titles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    background-color: #222;
+    color: #fff;
+    padding: 0 20px;
+    width: 800px;
+    gap: 20px;
+    border-radius: 15px;
+    
+}
+
+section{
+    background-color: inherits;
+}
+
+.Titles p{
+    margin: 0;
+    padding: 10px;
+    /* border-left: solid #000 1px; */
+    height: fit-content;
+}

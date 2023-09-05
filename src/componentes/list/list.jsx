@@ -1,95 +1,29 @@
-import './list.css'
-import React, { useEffect } from 'react';
-import { useTable } from 'react-table';
+import { Button } from "../button/button";
+import "./list.css";
+import React, { useEffect } from "react";
+import { ModifyWorkoutModal } from "../modal/modal-modify-workout/modal-modify-workout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function DataList({ data }) {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Id',
-        accessor: 'id',
-      },
-      {
-        Header: 'Date',
-        accessor: 'date',
-      },
-      {
-        Header: 'Time Spent',
-        accessor: 'timeSpent',
-      },
-      {
-        Header: 'Distance',
-        accessor: 'distance',
-      },
-      {
-        Header: 'Max Speed',
-        accessor: 'maxSpeed',
-      },
-      {
-        Header: 'Average Speed',
-        accessor: 'averageSpeed',
-      },
-      {
-        Header: 'Actions',
-        accessor: 'button'
-      }
-    ],
-    []
-  );
-
-  //USAR ISSO QUANDO FOR DELETAR
- function onDeleteWorkout(id) {
-  // TODO
-  alert(`Treino ${id} deletado`)
- }
-
-/*  useEffect(() => {
-  // const response = async 
-  alert(' ENTROU')
- }, []) */
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    data,
-  });
+function DataList(workout) {
+  workout = workout.workout;
 
   return (
-    <table {...getTableProps()} className="data-list">
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row);
-          return (
-            <>
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return (
-                  <td {...cell.getCellProps()}>{cell.render('Cell')}</td> 
-                );
-              })}
-              <button
-                onClick={() => onDeleteWorkout('oooo')}
-              >Delete</button>
-            </tr> 
-            </>
-          );
-        })}
-      </tbody>
-    </table>
+    <>
+      <div className="workout">
+        <p className="date">{workout?.date}</p>
+        <p className="timeSpent">{workout?.timeSpent}</p>
+        <p className="distance">{workout?.distance}</p>
+        <p className="maxSpeed">{workout?.maxSpeed}</p>
+        <p className="averageSpeed">{workout?.averageSpeed}</p>
+        <div className="actions">
+          <ModifyWorkoutModal />
+          <Button>
+            <FontAwesomeIcon icon={faTrash} />
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
 
