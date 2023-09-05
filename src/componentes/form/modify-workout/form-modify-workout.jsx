@@ -4,10 +4,11 @@ import { TextField } from "../../text-field/text-field";
 import "./form-modify-workout.css";
 import { api } from "../../../assets/api/api";
 
-export const FormModifyWorkout = () => {
+export const FormModifyWorkout = (props) => {
   const [error, setError] = useState([]);
+  const workoutId = props.workoutId;
 
-  const modifyWorkout = async (event, id) => {
+  const modifyWorkout = async (event, workoutId) => {
     const headers = {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       "Content-type": "application/json",
@@ -16,7 +17,7 @@ export const FormModifyWorkout = () => {
     console.log(date, timeSpent, distance, maxSpeed, averageSpeed);
     await api
       .put(
-        `/workouts/modify/${id}`,
+        `/workouts/modify/${workoutId}`,
         {
           date,
           timeSpent,
@@ -85,7 +86,7 @@ export const FormModifyWorkout = () => {
 
         <Button
           onClick={(e) => {
-            modifyWorkout(e, 3);
+            modifyWorkout(e, workoutId);
           }}
         >
           Modify Workout

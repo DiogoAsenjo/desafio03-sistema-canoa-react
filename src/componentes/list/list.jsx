@@ -1,12 +1,34 @@
 import { Button } from "../button/button";
 import "./list.css";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { ModifyWorkoutModal } from "../modal/modal-modify-workout/modal-modify-workout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { api } from "../../assets/api/api";
 
 function DataList(workout) {
+  //const [selectedWorkoutId, setSelectedWorkoutId] = useState([]);
   workout = workout.workout;
+  const workoutId = workout.id;
+
+  const [error, setError] = useState([]);
+
+  const deleteWorkout = async (event, workoutId) => {
+    const headers = {
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      "Content-type": "application/json",
+    };
+    event.preventDefault();
+    await api
+      .delete(`/workouts/${workoutId}`, { headers })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.response.data.message);
+      });
+  };
 
   return (
     <>
@@ -17,8 +39,12 @@ function DataList(workout) {
         <p className="maxSpeed">{workout?.maxSpeed}</p>
         <p className="averageSpeed">{workout?.averageSpeed}</p>
         <div className="actions">
-          <ModifyWorkoutModal />
-          <Button>
+          <ModifyWorkoutModal workoutId={workout.id} />
+          <Button
+            onClick={(e) => {
+              deleteWorkout(e, workoutId);
+            }}
+          >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
         </div>

@@ -16,7 +16,7 @@ const customStyles = {
   },
 };
 
-export const ModifyWorkoutModal = () => {
+export const ModifyWorkoutModal = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -37,7 +37,7 @@ export const ModifyWorkoutModal = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <FormModifyWorkout />
+        <FormModifyWorkout workoutId={props.workoutId} />
         <Button onClick={(e) => closeModal()}>Close modal</Button>
       </Modal>
     </>
