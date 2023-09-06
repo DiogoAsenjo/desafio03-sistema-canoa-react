@@ -15,3 +15,5 @@ Consegui fazer as telas em pouco menos de uma semana, nesse tempo aprendi sobre 
 ## Como acessar
 
 O projeto está disponível e pode ser usado e testado por qualquer um: [link do Projeto](https://diogoasenjo.github.io/desafio03-sistema-canoa-react/)
+
+Para mais informações sobre o projeto e sua finalidade acessar o repositório do backend do projeto: [link](https://github.com/DiogoAsenjo/desafio03-sistema-canoa)
