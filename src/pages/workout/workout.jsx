@@ -58,7 +58,11 @@ function Workout() {
         </>
       </div>
 
-      <AddWorkoutModal reloadPage={setReloadPage} statePage={realoadPage} />
+      <AddWorkoutModal
+        className="modal"
+        reloadPage={setReloadPage}
+        statePage={realoadPage}
+      />
     </section>
   );
 }

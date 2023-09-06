@@ -13,6 +13,11 @@ function verifyingTimeSpent(state) {
   }
 }
 
+function verififyDecimalNumbers(state) {
+  const regex = /^[0-9]+(\.[0-9]{1,2})?$/;
+  return regex.test(state);
+}
+
 export const FormModifyWorkout = (props) => {
   const [error, setError] = useState(null);
   const [responseOk, setResponseOk] = useState(false);
@@ -32,7 +37,12 @@ export const FormModifyWorkout = (props) => {
     };
     event.preventDefault();
     setError(null);
-    if (verifyingTimeSpent(timeSpent)) {
+    if (
+      verifyingTimeSpent(timeSpent) &&
+      verififyDecimalNumbers(distance) &&
+      verififyDecimalNumbers(maxSpeed) &&
+      verififyDecimalNumbers(averageSpeed)
+    ) {
       await api
         .put(
           `/workouts/modify/${workoutId}`,
@@ -54,9 +64,9 @@ export const FormModifyWorkout = (props) => {
           console.log(error);
           setError(error.response.data.message);
         });
-    } else {
+    } else if (!verifyingTimeSpent(timeSpent)) {
       setError("Time spent should be in this format HH:MM:SS");
-    }
+    } else setError("Decimal numbers should use .");
   };
 
   const [date, setDate] = useState(`${props.workout.date}`);

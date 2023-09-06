@@ -13,6 +13,11 @@ function verifyingTimeSpent(state) {
   }
 }
 
+function verififyDecimalNumbers(state) {
+  const regex = /^[0-9]+(\.[0-9]{1,2})?$/;
+  return regex.test(state);
+}
+
 export const FormAddWorkout = (props) => {
   const [error, setError] = useState(null);
   const [responseOk, setResponseOk] = useState(false);
@@ -31,7 +36,12 @@ export const FormAddWorkout = (props) => {
     };
     event.preventDefault();
     setError(null);
-    if (verifyingTimeSpent(timeSpent)) {
+    if (
+      verifyingTimeSpent(timeSpent) &&
+      verififyDecimalNumbers(distance) &&
+      verififyDecimalNumbers(maxSpeed) &&
+      verififyDecimalNumbers(averageSpeed)
+    ) {
       await api
         .post(
           "/workouts",
@@ -53,9 +63,9 @@ export const FormAddWorkout = (props) => {
           console.log(error);
           setError(error.response.data.message);
         });
-    } else {
+    } else if (!verifyingTimeSpent(timeSpent)) {
       setError("Time spent should be in this format HH:MM:SS");
-    }
+    } else setError("Decimal numbers should use .");
   };
 
   const [date, setDate] = useState("");
@@ -85,21 +95,21 @@ export const FormAddWorkout = (props) => {
         <TextField
           mandatory={true}
           label="Distance"
-          placeholder="Only numbers"
+          placeholder="Only numbers. Ex: 9.6"
           value={distance}
           typed={(value) => setDistance(value)}
         />
         <TextField
           mandatory={true}
           label="Max speed"
-          placeholder="Only numbers"
+          placeholder="Only numbers. . Ex: 7.06"
           value={maxSpeed}
           typed={(value) => setMaxSpeed(value)}
         />
         <TextField
           mandatory={true}
           label="Average speed"
-          placeholder="Only numbers"
+          placeholder="Only numbers. . Ex: 10.5"
           value={averageSpeed}
           typed={(value) => setAverageSpeed(value)}
         />
