@@ -1,19 +1,19 @@
-# Objetivo
+## Objective
 
-Frontend feito como parte do Desafio 03 do Processo de Formação da ModalGR. Apesar do foco da formação ser backend, tivemos que fazer um sistema resolvendo um problema real que integrasse com o front.
+Frontend developed as part of Challenge 03 in ModalGR's Training Program. Despite the program's main focus on backend development with NodeJS, we were required to create a system that addressed a real-world problem and integrated with the frontend.
 
-Vale ressaltar que tinha pouca experiência com front e nunca tinha usado React, foi meu primeiro projeto fullstack.
+I had limited frontend experience and had never used React before, making this my first full-stack project.
 
-# Tecnologias utilizadas
+## Technologies Used
 
 - React
 
-# Como foi feito
+## How It Was Done
 
-Consegui fazer as telas em pouco menos de uma semana, nesse tempo aprendi sobre os componentes e consegui utilizar alguns hooks como o useState e useEffect.
+I managed to create the screens in just under a week. During this time, I learned about components and was able to utilize some hooks like useState and useEffect.
 
-## Como acessar
+## How to Access
 
-O projeto está disponível e pode ser usado e testado por qualquer um: [link do Projeto](https://diogoasenjo.github.io/desafio03-sistema-canoa-react/)
+The project is available and can be used and tested by anyone: [project link](https://diogoasenjo.github.io/desafio03-sistema-canoa-react/)
 
-Para mais informações sobre o projeto e sua finalidade acessar o repositório do backend do projeto: [link](https://github.com/DiogoAsenjo/desafio03-sistema-canoa)
+For more information about the project and its purpose, please visit the backend repository: [link](https://github.com/DiogoAsenjo/desafio03-sistema-canoa)
