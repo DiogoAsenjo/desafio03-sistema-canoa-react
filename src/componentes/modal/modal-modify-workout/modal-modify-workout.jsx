@@ -44,7 +44,7 @@ export const ModifyWorkoutModal = (props) => {
           statePage={props.statePage}
           closeModal={closeModal}
         />
-        <Button onClick={(e) => closeModal()}>Close modal</Button>
+        {/* <Button onClick={(e) => closeModal()}>Close modal</Button> */}
       </Modal>
     </>
   );

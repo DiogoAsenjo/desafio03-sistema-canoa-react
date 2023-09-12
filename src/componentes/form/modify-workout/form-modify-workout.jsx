@@ -81,41 +81,47 @@ export const FormModifyWorkout = (props) => {
     <section className="form-modify-workout">
       <form onSubmit={modifyWorkout}>
         <h2>Modify workout</h2>
-        <TextField
-          mandatory={true}
-          label="Date"
-          placeholder="YYYY-MM-DD"
-          value={date}
-          typed={(value) => setDate(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Time spent"
-          placeholder="Hours:Minutes:Seconds"
-          value={timeSpent}
-          typed={(value) => setTimeSpent(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Distance"
-          placeholder="Only numbers"
-          value={distance}
-          typed={(value) => setDistance(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Max speed"
-          placeholder="Only numbers"
-          value={maxSpeed}
-          typed={(value) => setMaxSpeed(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Average speed"
-          placeholder="Only numbers"
-          value={averageSpeed}
-          typed={(value) => setAverageSpeed(value)}
-        />
+        <div>
+          <TextField
+            mandatory={true}
+            label="Date"
+            placeholder="YYYY-MM-DD"
+            value={date}
+            typed={(value) => setDate(value)}
+          />
+          <TextField
+            mandatory={true}
+            label="Time spent"
+            placeholder="Hours:Minutes:Seconds"
+            value={timeSpent}
+            typed={(value) => setTimeSpent(value)}
+          />
+        </div>
+        <div>
+          <TextField
+            mandatory={true}
+            label="Distance"
+            placeholder="Only numbers"
+            value={distance}
+            typed={(value) => setDistance(value)}
+          />
+          <TextField
+            mandatory={true}
+            label="Max speed"
+            placeholder="Only numbers"
+            value={maxSpeed}
+            typed={(value) => setMaxSpeed(value)}
+          />
+        </div>
+        <div>
+          <TextField
+            mandatory={true}
+            label="Average speed"
+            placeholder="Only numbers"
+            value={averageSpeed}
+            typed={(value) => setAverageSpeed(value)}
+          />
+        </div>
 
         {error && (
           <p className="error">{Array.isArray(error) ? error[0] : error}</p>
