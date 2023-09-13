@@ -1,0 +1,46 @@
+.main-navigation {
+    background-color: #CD853F;
+    margin-bottom: 20px;
+    height: 55px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row nowrap;
+    list-style: none;
+    gap: 30px;
+    width: 90vw;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+a:hover {
+    color: #000;
+}
+
+.links{
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    gap: 30px;
+}
+
+.logout {
+    border: none;
+    background-color: #CD853F;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.logout:hover {
+    color: #000;
+}

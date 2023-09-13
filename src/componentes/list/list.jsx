@@ -35,6 +35,7 @@ function DataList(props) {
     <>
       <div className="workout">
         <p className="date">{workout?.date}</p>
+        <p className="schedule">{workout?.schedule}</p>
         <p className="timeSpent">{workout?.timeSpent}</p>
         <p className="distance">{workout?.distance}</p>
         <p className="maxSpeed">{workout?.maxSpeed}</p>

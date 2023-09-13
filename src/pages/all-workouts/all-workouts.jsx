@@ -3,6 +3,7 @@ import { AddWorkoutModal } from "../../componentes/modal/modal-add-workout/modal
 import { api } from "../../assets/api/api";
 import { useState, useEffect } from "react";
 import "./all-workouts.css";
+import { MainNavigation } from "../../componentes/main-navigation/main-navigation";
 
 function AllWorkouts() {
   const [error, setError] = useState([]);
@@ -37,10 +38,12 @@ function AllWorkouts() {
 
   return (
     <section className="workout-section">
+      <MainNavigation />
       <div className="workouts">
         <>
           <div className="Titles">
             <p className="date">Date</p>
+            <p className="schedule">Schedule</p>
             <p className="timeSpent">Time Spent</p>
             <p className="distance">Distance</p>
             <p className="maxSpeed">Max Speed</p>
@@ -58,11 +61,11 @@ function AllWorkouts() {
         </>
       </div>
 
-      <AddWorkoutModal
+      {/* <AddWorkoutModal
         className="modal"
         reloadPage={setReloadPage}
         statePage={realoadPage}
-      />
+      /> */}
     </section>
   );
 }

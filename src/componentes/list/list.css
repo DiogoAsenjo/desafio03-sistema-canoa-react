@@ -6,21 +6,25 @@
   align-items: center;
   flex-flow: row nowrap;
   padding: 0 20px;
-  width: 800px;
+  width: 900px;
   gap: 20px;
-  background-color: #fff;
+  background-color: #F1EBEA;
   border-radius: 15px;
   
 
 }
 
-.date, .timeSpent, .distance, .maxSpeed, .averageSpeed, .actions{
+.date, .schedule, .timeSpent, .distance, .maxSpeed, .averageSpeed, .actions{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .date{
+  width: 120px;
+}
+
+.schedule{
   width: 120px;
 }
 
