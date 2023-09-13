@@ -47,6 +47,7 @@ export const FormAddWorkout = (props) => {
           "/workouts",
           {
             date,
+            schedule,
             timeSpent,
             distance: parseFloat(distance),
             maxSpeed: parseFloat(maxSpeed),
@@ -69,6 +70,7 @@ export const FormAddWorkout = (props) => {
   };
 
   const [date, setDate] = useState("");
+  const [schedule, setSchedule] = useState("");
   const [timeSpent, setTimeSpent] = useState("");
   const [distance, setDistance] = useState("");
   const [maxSpeed, setMaxSpeed] = useState("");
@@ -84,6 +86,13 @@ export const FormAddWorkout = (props) => {
           placeholder="YYYY-MM-DD"
           value={date}
           typed={(value) => setDate(value)}
+        />
+        <TextField
+          mandatory={true}
+          label="Schedule"
+          placeholder="XXhXX, 'Trip' or 'Other'"
+          value={schedule}
+          typed={(value) => setSchedule(value)}
         />
         <TextField
           mandatory={true}
