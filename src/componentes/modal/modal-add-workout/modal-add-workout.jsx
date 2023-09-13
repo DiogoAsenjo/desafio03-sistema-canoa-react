@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Modal from "react-modal";
-import { Button } from "../../button/button";
+import "./modal-add-workout.css";
 import { FormAddWorkout } from "../../form/add-workout/form-add-workout";
 
 const customStyles = {
@@ -28,7 +28,9 @@ export const AddWorkoutModal = (props) => {
 
   return (
     <>
-      <Button onClick={openModal}>Add workout</Button>
+      <button className="addButton" onClick={openModal}>
+        Add workout
+      </button>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

@@ -2,9 +2,9 @@ import DataList from "../../componentes/list/list";
 import { AddWorkoutModal } from "../../componentes/modal/modal-add-workout/modal-add-workout";
 import { api } from "../../assets/api/api";
 import { useState, useEffect } from "react";
-import "./workout.css";
+import "./all-workouts.css";
 
-function Workout() {
+function AllWorkouts() {
   const [error, setError] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [realoadPage, setReloadPage] = useState(false);
@@ -67,4 +67,4 @@ function Workout() {
   );
 }
 
-export default Workout;
+export default AllWorkouts;
