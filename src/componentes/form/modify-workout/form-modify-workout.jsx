@@ -48,6 +48,7 @@ export const FormModifyWorkout = (props) => {
           `/workouts/modify/${workoutId}`,
           {
             date,
+            schedule,
             timeSpent,
             distance: parseFloat(distance),
             maxSpeed: parseFloat(maxSpeed),
@@ -70,6 +71,7 @@ export const FormModifyWorkout = (props) => {
   };
 
   const [date, setDate] = useState(`${props.workout.date}`);
+  const [schedule, setSchedule] = useState(`${props.workout.schedule}`);
   const [timeSpent, setTimeSpent] = useState(`${props.workout.timeSpent}`);
   const [distance, setDistance] = useState(`${props.workout.distance}`);
   const [maxSpeed, setMaxSpeed] = useState(`${props.workout.maxSpeed}`);
@@ -81,22 +83,27 @@ export const FormModifyWorkout = (props) => {
     <section className="form-modify-workout">
       <form onSubmit={modifyWorkout}>
         <h2>Modify workout</h2>
-        <div>
-          <TextField
-            mandatory={true}
-            label="Date"
-            placeholder="YYYY-MM-DD"
-            value={date}
-            typed={(value) => setDate(value)}
-          />
-          <TextField
-            mandatory={true}
-            label="Time spent"
-            placeholder="Hours:Minutes:Seconds"
-            value={timeSpent}
-            typed={(value) => setTimeSpent(value)}
-          />
-        </div>
+        <TextField
+          mandatory={true}
+          label="Date"
+          placeholder="YYYY-MM-DD"
+          value={date}
+          typed={(value) => setDate(value)}
+        />
+        <TextField
+          mandatory={true}
+          label="Schedule"
+          placeholder=""
+          value={schedule}
+          typed={(value) => setSchedule(value)}
+        />
+        <TextField
+          mandatory={true}
+          label="Time spent"
+          placeholder="Hours:Minutes:Seconds"
+          value={timeSpent}
+          typed={(value) => setTimeSpent(value)}
+        />
         <div>
           <TextField
             mandatory={true}
@@ -105,6 +112,8 @@ export const FormModifyWorkout = (props) => {
             value={distance}
             typed={(value) => setDistance(value)}
           />
+        </div>
+        <div>
           <TextField
             mandatory={true}
             label="Max speed"
@@ -112,8 +121,6 @@ export const FormModifyWorkout = (props) => {
             value={maxSpeed}
             typed={(value) => setMaxSpeed(value)}
           />
-        </div>
-        <div>
           <TextField
             mandatory={true}
             label="Average speed"
