@@ -19,7 +19,7 @@ export const FormLogin = () => {
       })
       .then((response) => {
         sessionStorage.setItem("token", response.data.access_token);
-        if (response.request.status === 200) navigate("/all-workouts");
+        if (response.request.status === 200) navigate("/user-workouts");
       })
       .catch((error) => setError(error.response.data.message));
   };
