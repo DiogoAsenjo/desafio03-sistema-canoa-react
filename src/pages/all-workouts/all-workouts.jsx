@@ -42,13 +42,13 @@ function AllWorkouts() {
       <div className="workouts">
         <>
           <div className="Titles">
+            <p className="createdBy">Created by</p>
             <p className="date">Date</p>
             <p className="schedule">Schedule</p>
             <p className="timeSpent">Time Spent</p>
             <p className="distance">Distance</p>
             <p className="maxSpeed">Max Speed</p>
-            <p className="averageSpeed">Average Speed</p>
-            <p className="actions">Actions</p>
+            <p className="averageSpeed">Avg. Speed</p>
           </div>
           {workouts.length > 0 &&
             workouts.map((workout) => (
@@ -56,6 +56,7 @@ function AllWorkouts() {
                 workout={workout}
                 reloadPage={setReloadPage}
                 statePage={realoadPage}
+                ableToModify={false}
               />
             ))}
         </>

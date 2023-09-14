@@ -47,7 +47,7 @@ function UserWorkouts() {
             <p className="timeSpent">Time Spent</p>
             <p className="distance">Distance</p>
             <p className="maxSpeed">Max Speed</p>
-            <p className="averageSpeed">Average Speed</p>
+            <p className="averageSpeed">Avg. Speed</p>
             <p className="actions">Actions</p>
           </div>
           {workouts.length > 0 &&
@@ -56,6 +56,7 @@ function UserWorkouts() {
                 workout={workout}
                 reloadPage={setReloadPage}
                 statePage={realoadPage}
+                ableToModify={true}
               />
             ))}
         </>

@@ -6,6 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { api } from "../../assets/api/api";
 
+const extractFirstName = (fullName) => {
+  const words = fullName.split(" ");
+  const firstName = words[0];
+  const lastName = words[1][0];
+  return `${firstName} ${lastName}.`;
+};
+
 function DataList(props) {
   //const [selectedWorkoutId, setSelectedWorkoutId] = useState([]);
   const workout = props.workout;
@@ -34,26 +41,33 @@ function DataList(props) {
   return (
     <>
       <div className="workout">
+        {!props.ableToModify && (
+          <p className="createdBy">
+            {extractFirstName(workout?.user.fullName)}
+          </p>
+        )}
         <p className="date">{workout?.date}</p>
         <p className="schedule">{workout?.schedule}</p>
         <p className="timeSpent">{workout?.timeSpent}</p>
         <p className="distance">{workout?.distance}</p>
         <p className="maxSpeed">{workout?.maxSpeed}</p>
         <p className="averageSpeed">{workout?.averageSpeed}</p>
-        <div className="actions">
-          <ModifyWorkoutModal
-            workout={workout}
-            reloadPage={props.reloadPage}
-            statePage={props.statePage}
-          />
-          <Button
-            onClick={(e) => {
-              deleteWorkout(e, workoutId);
-            }}
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </Button>
-        </div>
+        {props.ableToModify && (
+          <div className="actions">
+            <ModifyWorkoutModal
+              workout={workout}
+              reloadPage={props.reloadPage}
+              statePage={props.statePage}
+            />
+            <Button
+              onClick={(e) => {
+                deleteWorkout(e, workoutId);
+              }}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
