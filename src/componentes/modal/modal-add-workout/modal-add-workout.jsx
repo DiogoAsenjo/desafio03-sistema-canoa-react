@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Modal from "react-modal";
-import { Button } from "../../button/button";
+import "./modal-add-workout.css";
 import { FormAddWorkout } from "../../form/add-workout/form-add-workout";
 
 const customStyles = {
@@ -9,9 +9,10 @@ const customStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "40%",
-    height: "80%",
-    backgroundColor: "darkslategrey",
+    width: "400px",
+    height: "500px",
+    backgroundColor: "#34495E",
+    borderRadius: "10px",
   },
 };
 
@@ -28,7 +29,9 @@ export const AddWorkoutModal = (props) => {
 
   return (
     <>
-      <Button onClick={openModal}>Add workout</Button>
+      <button className="addButton" onClick={openModal}>
+        Add workout
+      </button>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -39,7 +42,7 @@ export const AddWorkoutModal = (props) => {
           statePage={props.statePage}
           closeModal={closeModal}
         />
-        <Button onClick={(e) => closeModal()}>Close modal</Button>
+        {/* <Button onClick={(e) => closeModal()}>Close modal</Button> */}
       </Modal>
     </>
   );

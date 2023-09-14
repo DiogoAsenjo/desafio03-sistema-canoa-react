@@ -48,6 +48,7 @@ export const FormModifyWorkout = (props) => {
           `/workouts/modify/${workoutId}`,
           {
             date,
+            schedule,
             timeSpent,
             distance: parseFloat(distance),
             maxSpeed: parseFloat(maxSpeed),
@@ -70,6 +71,7 @@ export const FormModifyWorkout = (props) => {
   };
 
   const [date, setDate] = useState(`${props.workout.date}`);
+  const [schedule, setSchedule] = useState(`${props.workout.schedule}`);
   const [timeSpent, setTimeSpent] = useState(`${props.workout.timeSpent}`);
   const [distance, setDistance] = useState(`${props.workout.distance}`);
   const [maxSpeed, setMaxSpeed] = useState(`${props.workout.maxSpeed}`);
@@ -90,32 +92,45 @@ export const FormModifyWorkout = (props) => {
         />
         <TextField
           mandatory={true}
+          label="Schedule"
+          placeholder=""
+          value={schedule}
+          typed={(value) => setSchedule(value)}
+        />
+        <TextField
+          mandatory={true}
           label="Time spent"
           placeholder="Hours:Minutes:Seconds"
           value={timeSpent}
           typed={(value) => setTimeSpent(value)}
         />
-        <TextField
-          mandatory={true}
-          label="Distance"
-          placeholder="Only numbers"
-          value={distance}
-          typed={(value) => setDistance(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Max speed"
-          placeholder="Only numbers"
-          value={maxSpeed}
-          typed={(value) => setMaxSpeed(value)}
-        />
-        <TextField
-          mandatory={true}
-          label="Average speed"
-          placeholder="Only numbers"
-          value={averageSpeed}
-          typed={(value) => setAverageSpeed(value)}
-        />
+        <div>
+          <TextField
+            mandatory={true}
+            label="Distance"
+            placeholder="Only numbers"
+            value={distance}
+            typed={(value) => setDistance(value)}
+          />
+        </div>
+        <div className="twoInputs">
+          <label htmlFor="">Max speed</label>
+          <input
+            className="inputs"
+            mandatory={true}
+            placeholder=""
+            value={maxSpeed}
+            onChange={(e) => setMaxSpeed(e.target.value)}
+          ></input>
+          <label htmlFor="">Average speed</label>
+          <input
+            className="inputs"
+            mandatory={true}
+            placeholder=""
+            value={averageSpeed}
+            onChange={(e) => setAverageSpeed(e.target.value)}
+          ></input>
+        </div>
 
         {error && (
           <p className="error">{Array.isArray(error) ? error[0] : error}</p>

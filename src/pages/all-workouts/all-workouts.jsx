@@ -2,9 +2,10 @@ import DataList from "../../componentes/list/list";
 import { AddWorkoutModal } from "../../componentes/modal/modal-add-workout/modal-add-workout";
 import { api } from "../../assets/api/api";
 import { useState, useEffect } from "react";
-import "./workout.css";
+import "./all-workouts.css";
+import { MainNavigation } from "../../componentes/main-navigation/main-navigation";
 
-function Workout() {
+function AllWorkouts() {
   const [error, setError] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [realoadPage, setReloadPage] = useState(false);
@@ -37,15 +38,17 @@ function Workout() {
 
   return (
     <section className="workout-section">
+      <MainNavigation />
       <div className="workouts">
         <>
           <div className="Titles">
+            <p className="createdBy">Created by</p>
             <p className="date">Date</p>
+            <p className="schedule">Schedule</p>
             <p className="timeSpent">Time Spent</p>
             <p className="distance">Distance</p>
             <p className="maxSpeed">Max Speed</p>
-            <p className="averageSpeed">Average Speed</p>
-            <p className="actions">Actions</p>
+            <p className="averageSpeed">Avg. Speed</p>
           </div>
           {workouts.length > 0 &&
             workouts.map((workout) => (
@@ -53,18 +56,19 @@ function Workout() {
                 workout={workout}
                 reloadPage={setReloadPage}
                 statePage={realoadPage}
+                ableToModify={false}
               />
             ))}
         </>
       </div>
 
-      <AddWorkoutModal
+      {/* <AddWorkoutModal
         className="modal"
         reloadPage={setReloadPage}
         statePage={realoadPage}
-      />
+      /> */}
     </section>
   );
 }
 
-export default Workout;
+export default AllWorkouts;
