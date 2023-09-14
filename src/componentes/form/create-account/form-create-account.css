@@ -1,5 +1,6 @@
 .form-create-account {
-    width: 40%;
+    width: 50%;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     margin: 40px 0;
