@@ -10,8 +10,10 @@ const customStyles = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "40%",
-    height: "80%",
+    height: "85%",
     backgroundColor: "darkslategrey",
+    display: "flex",
+    borderRadius: "10px",
   },
 };
 
