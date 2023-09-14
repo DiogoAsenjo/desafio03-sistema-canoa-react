@@ -113,21 +113,23 @@ export const FormModifyWorkout = (props) => {
             typed={(value) => setDistance(value)}
           />
         </div>
-        <div>
-          <TextField
+        <div className="twoInputs">
+          <label htmlFor="">Max speed</label>
+          <input
+            className="inputs"
             mandatory={true}
-            label="Max speed"
-            placeholder="Only numbers"
+            placeholder=""
             value={maxSpeed}
-            typed={(value) => setMaxSpeed(value)}
-          />
-          <TextField
+            onChange={(e) => setMaxSpeed(e.target.value)}
+          ></input>
+          <label htmlFor="">Average speed</label>
+          <input
+            className="inputs"
             mandatory={true}
-            label="Average speed"
-            placeholder="Only numbers"
+            placeholder=""
             value={averageSpeed}
-            typed={(value) => setAverageSpeed(value)}
-          />
+            onChange={(e) => setAverageSpeed(e.target.value)}
+          ></input>
         </div>
 
         {error && (

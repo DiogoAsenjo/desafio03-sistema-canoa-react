@@ -11,9 +11,10 @@ const customStyles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "40%",
-    height: "80%",
-    backgroundColor: "darkslategrey",
+    width: "400px",
+    height: "500px",
+    backgroundColor: "#34495E",
+    borderRadius: "10px",
   },
 };
 
