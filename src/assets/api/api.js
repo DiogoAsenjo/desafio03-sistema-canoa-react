@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://desafio03-sistema-canoa.vercel.app/"
-})
+  baseURL: "http://3.17.190.146:3333/",
+});
