@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://asenjo.riann.dev/",
+  baseURL: "https://api.treinoscanoa.com.br/",
 });
