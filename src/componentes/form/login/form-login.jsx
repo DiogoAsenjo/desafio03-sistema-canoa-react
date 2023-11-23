@@ -59,7 +59,7 @@ export const FormLogin = () => {
             login(e);
           }}
         >
-          Login..
+          Login.
         </Button>
         <Button
           className="button-create"
@@ -67,7 +67,7 @@ export const FormLogin = () => {
             navigate("/create-account");
           }}
         >
-          Create account..
+          Create account.
         </Button>
       </form>
     </section>
