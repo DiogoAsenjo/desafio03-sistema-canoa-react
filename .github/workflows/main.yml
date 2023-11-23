@@ -1,0 +1,48 @@
+---
+name: Build and Deploy React App to S3 Bucket and Cloudfront
+on: #Qual ação irá fazer o workflow funcionar, no caso, um push na branch main.
+  push:
+    branches: [main]
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    env:
+      BUCKET: treinos-canoa-front #Nome do S3 Bucket
+      DIST: build #Qual pasta você irá enviar pra AWS
+      REGION: us-east-2 #Qual região do Bucket
+      DIST_ID: E33YBLSF0V8NXZ
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.REGION }}
+
+        # Para caso necessite de alguma versão específica do Node.
+        #- uses: actions/setup-node@v2
+        # with:
+        #    node-version: '14'
+
+      - name: Install Dependencies
+        run: |
+          node --version
+          npm ci --production
+
+      - name: Build Static Website
+        run: npm run build
+
+      - name: Copy files to the production website with AWS CLI
+        run: |
+          aws s3 sync --delete ${{ env.DIST }} s3://${{ env.BUCKET }}
+
+      - name: Create an Invalidation on Cloudfront with AWS CLI
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id ${{ env.DIST }} \
+          --paths "/*"
