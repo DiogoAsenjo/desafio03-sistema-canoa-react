@@ -18,17 +18,22 @@ function verififyDecimalNumbers(state) {
   return regex.test(state);
 }
 
-export const FormModifyWorkout = (props) => {
+export const FormModifyWorkout = ({
+  workout,
+  reloadPage,
+  closeModal,
+  statePage,
+}) => {
   const [error, setError] = useState(null);
   const [responseOk, setResponseOk] = useState(false);
-  const workoutId = props.workout.id;
+  const workoutId = workout.id;
 
   useEffect(() => {
     if (responseOk) {
-      props.reloadPage(!props.statePage);
-      props.closeModal();
+      reloadPage(!statePage);
+      closeModal();
     }
-  }, [responseOk]);
+  }, [responseOk, statePage, closeModal, reloadPage]);
 
   const modifyWorkout = async (event, workoutId) => {
     const headers = {
@@ -70,14 +75,12 @@ export const FormModifyWorkout = (props) => {
     } else setError("Decimal numbers should use .");
   };
 
-  const [date, setDate] = useState(`${props.workout.date}`);
-  const [schedule, setSchedule] = useState(`${props.workout.schedule}`);
-  const [timeSpent, setTimeSpent] = useState(`${props.workout.timeSpent}`);
-  const [distance, setDistance] = useState(`${props.workout.distance}`);
-  const [maxSpeed, setMaxSpeed] = useState(`${props.workout.maxSpeed}`);
-  const [averageSpeed, setAverageSpeed] = useState(
-    `${props.workout.averageSpeed}`
-  );
+  const [date, setDate] = useState(`${workout.date}`);
+  const [schedule, setSchedule] = useState(`${workout.schedule}`);
+  const [timeSpent, setTimeSpent] = useState(`${workout.timeSpent}`);
+  const [distance, setDistance] = useState(`${workout.distance}`);
+  const [maxSpeed, setMaxSpeed] = useState(`${workout.maxSpeed}`);
+  const [averageSpeed, setAverageSpeed] = useState(`${workout.averageSpeed}`);
 
   return (
     <section className="form-modify-workout">

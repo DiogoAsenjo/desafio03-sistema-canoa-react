@@ -18,16 +18,16 @@ function verififyDecimalNumbers(state) {
   return regex.test(state);
 }
 
-export const FormAddWorkout = (props) => {
+export const FormAddWorkout = ({ reloadPage, statePage, closeModal }) => {
   const [error, setError] = useState(null);
   const [responseOk, setResponseOk] = useState(false);
 
   useEffect(() => {
     if (responseOk) {
-      props.reloadPage(!props.statePage);
-      props.closeModal();
+      reloadPage(!statePage);
+      closeModal();
     }
-  }, [responseOk]);
+  }, [responseOk, reloadPage, statePage, closeModal]);
 
   const addWorkout = async (event) => {
     const headers = {
