@@ -1,22 +1,22 @@
 .form-create-account {
-    width: 50%;
-    max-width: 450px;
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
+  width: 50%;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
 }
 
 .form-create-account form {
-    display: flex;
-    flex-flow: column wrap;
-    max-width: 80%;
-    background-color: #f2f2f2;
-    border-radius: 20px;
-    padding: 10px 20px;
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 80%;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding: 10px 20px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-.error{
-    color: red;
-    font-weight: 700;
+.error {
+  color: red;
+  font-weight: 700;
 }

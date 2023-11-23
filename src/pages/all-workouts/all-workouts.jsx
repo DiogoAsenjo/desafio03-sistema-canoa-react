@@ -1,12 +1,11 @@
 import DataList from "../../componentes/list/list";
-import { AddWorkoutModal } from "../../componentes/modal/modal-add-workout/modal-add-workout";
 import { api } from "../../assets/api/api";
 import { useState, useEffect } from "react";
 import "./all-workouts.css";
 import { MainNavigation } from "../../componentes/main-navigation/main-navigation";
 
 function AllWorkouts() {
-  const [error, setError] = useState([]);
+  const [, setError] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [realoadPage, setReloadPage] = useState(false);
 

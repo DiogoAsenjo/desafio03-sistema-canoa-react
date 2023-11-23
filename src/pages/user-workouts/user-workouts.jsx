@@ -6,7 +6,7 @@ import "./user-workouts.css";
 import { MainNavigation } from "../../componentes/main-navigation/main-navigation";
 
 function UserWorkouts() {
-  const [error, setError] = useState([]);
+  const [, setError] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [realoadPage, setReloadPage] = useState(false);
 

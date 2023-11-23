@@ -18,7 +18,7 @@ function DataList(props) {
   const workout = props.workout;
   const workoutId = props.workout.id;
 
-  const [error, setError] = useState([]);
+  const [, setError] = useState([]);
 
   const deleteWorkout = async (event, workoutId) => {
     const headers = {

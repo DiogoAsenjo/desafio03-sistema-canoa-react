@@ -1,6 +1,4 @@
-
-
-.workout{
+.workout {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,48 +6,51 @@
   padding: 0 20px;
   width: 900px;
   gap: 20px;
-  background-color: #F1EBEA;
+  background-color: #f1ebea;
   border-radius: 15px;
-  
-
 }
 
-.date, .schedule, .timeSpent, .distance, .maxSpeed, .averageSpeed, .actions{
+.date,
+.schedule,
+.timeSpent,
+.distance,
+.maxSpeed,
+.averageSpeed,
+.actions {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.date{
+.date {
   width: 120px;
 }
 
-.schedule{
+.schedule {
   width: 120px;
 }
 
-.timeSpent{
+.timeSpent {
   width: 140px;
 }
 
-.distance{
+.distance {
   width: 100px;
 }
 
-.maxSpeed{
+.maxSpeed {
   width: 130px;
 }
 
-.averageSpeed{
+.averageSpeed {
   width: 130px;
 }
 
-.actions{
+.actions {
   width: 150px;
   gap: 10px;
 }
 
-.createdBy{
+.createdBy {
   width: 140px;
 }
-
