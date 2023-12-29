@@ -9,6 +9,10 @@ import { api } from "../../assets/api/api";
 const extractFirstName = (fullName) => {
   const words = fullName.split(" ");
   const firstName = words[0];
+  if (!words[1]) {
+    return `${firstName}`;
+  }
+
   const lastName = words[1][0];
   return `${firstName} ${lastName}.`;
 };
